@@ -17,10 +17,10 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-      params[:user][:email] = params[:user][:email].strip if params[:user] and params[:user][:email]
+      params[:member][:email] = params[:member][:email].strip if params[:member] and params[:member][:email]
       build_resource
-      logger.info '=================resource==========' + params[:user][:password]
-      register_XMPP_user params[:user][:email], params[:user][:password]
+      logger.info '=================resource==========' + params[:member][:password]
+      register_XMPP_user params[:member][:email], params[:member][:password]
       if resource.save
         if resource.active_for_authentication?
           set_flash_message :notice, :signed_up if is_navigational_format?

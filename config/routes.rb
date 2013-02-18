@@ -1,6 +1,7 @@
 TextSupport::Application.routes.draw do
+
   #devise_for :users
-  devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations"}
+  devise_for :members, :controllers => {:sessions => "sessions", :registrations => "registrations"}
   match '/login', :to => 'pages#login'
 
   # The priority is based upon order of creation:
