@@ -5,16 +5,14 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'rest-client'
+
 gem 'mysql2'
 
 gem 'devise'
 
-gem 'xmpp4r'
-
 gem 'therubyracer'
 gem 'linecache19', :git => 'git://github.com/mark-moseley/linecache'
-gem 'ruby-debug-base19x', '~> 0.11.30.pre4'
-gem 'ruby-debug19'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -42,4 +40,5 @@ gem 'jquery-rails'
  gem 'capistrano'
 
 # To use debugger
- gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'ruby-debug-base19x', '~> 0.11.30.pre4'

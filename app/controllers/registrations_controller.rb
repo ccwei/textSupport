@@ -1,30 +1,27 @@
-require 'xmpp4r'
+require 'rest-client'
 
 class RegistrationsController < Devise::RegistrationsController
+  DOMAINNAME = 'textsupport.no-ip.org'
+  ADMIN_ACCOUNT = 'new'
+  ADMIN_PASSWORD = '123456'
   def register_XMPP_user(username, password)
-    jid = Jabber::JID.new('chat@localhost')
-    client = Jabber::Client.new(jid)
-    client.connect
-    client.auth("123456")
-
-    #iqr = Iq.new(:set)
-    #qr = IqQuery.new
-    #qr.add_namespace('jabber:iq:register')
-    #qr.add(REXML::Element.new('username').add_text(username))
-    #qr.add(REXML::Element.new('password').add_text(password))
-    #iqr.add(qr)
-    #client.send iqr
+    server_str = 'http://' + DOMAINNAME + ':5285/rest'
+    register_str = '--auth ' + ADMIN_ACCOUNT + ' ' + DOMAINNAME + ' ' + ADMIN_PASSWORD + ' register ' + username + ' ' + DOMAINNAME + ' ' +  password
+    response = RestClient.post(server_str, register_str)
   end
 
   def create
       params[:member][:email] = params[:member][:email].strip if params[:member] and params[:member][:email]
       build_resource
+      xmpp_username = params[:member][:email].split('@')[0] 
+      xmpp_password = params[:member][:password]
       logger.info '=================resource==========' + params[:member][:password]
       register_XMPP_user params[:member][:email], params[:member][:password]
       if resource.save
         if resource.active_for_authentication?
           set_flash_message :notice, :signed_up if is_navigational_format?
           sign_up(resource_name, resource)
+          register_XMPP_user(xmpp_username, xmpp_password)
           respond_with resource, :location => after_sign_up_path_for(resource)
         else
           set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
