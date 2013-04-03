@@ -3,6 +3,7 @@ TextSupport::Application.routes.draw do
   #devise_for :users
   devise_for :members, :controllers => {:sessions => "sessions", :registrations => "registrations"}
   match '/login', :to => 'pages#login'
+  get '/chatusers/random_user/' => "chatusers#random_user", :as => "random_user"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

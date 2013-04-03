@@ -1,19 +1,15 @@
-require 'rest-client'
+require './ModRest.rb'
 
 class RegistrationsController < Devise::RegistrationsController
-  DOMAINNAME = 'textsupport.no-ip.org'
-  ADMIN_ACCOUNT = 'new'
-  ADMIN_PASSWORD = '123456'
   def register_XMPP_user(username, password)
-    server_str = 'http://' + DOMAINNAME + ':5285/rest'
-    register_str = '--auth ' + ADMIN_ACCOUNT + ' ' + DOMAINNAME + ' ' + ADMIN_PASSWORD + ' register ' + username + ' ' + DOMAINNAME + ' ' +  password
-    response = RestClient.post(server_str, register_str)
+    register_str = 'register ' + username + ' ' + DOMAINNAME + ' ' +  password
+    response = send_ctl_command(register_str)
   end
 
   def create
       params[:member][:email] = params[:member][:email].strip if params[:member] and params[:member][:email]
       build_resource
-      xmpp_username = params[:member][:email].split('@')[0] 
+      xmpp_username = params[:member][:email].gsub('@', '_')
       xmpp_password = params[:member][:password]
       logger.info '=================resource==========' + params[:member][:password]
       register_XMPP_user params[:member][:email], params[:member][:password]
