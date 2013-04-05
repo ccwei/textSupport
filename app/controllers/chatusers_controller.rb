@@ -5,7 +5,7 @@ class ChatusersController < ActionController::Base
     offset = rand(Member.count)
     rand_member = Member.first(:offset => offset)
     #render :json => rand_member.jid.to_json()
-    return rand_member
+    return rand_member.jid
   end
 
   def add_rosteritem user1, user2
@@ -15,6 +15,8 @@ class ChatusersController < ActionController::Base
 
   def chat_random_user
     user1 = params[:user]
-    add_rosteritem user1, random_user
+    user2 = random_user
+    add_rosteritem user1, user2
+    render :json => {:listenerJid => user2 + '@' + DOMAINNAME}.to_json()
   end
 end
