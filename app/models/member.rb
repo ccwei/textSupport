@@ -7,6 +7,7 @@ class Member < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+  scope :listeners, where(:is_listener => true)
 
   def jid
     email.gsub('@', '_') 

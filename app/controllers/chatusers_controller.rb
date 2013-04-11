@@ -2,8 +2,9 @@ require './ModRest.rb'
 
 class ChatusersController < ActionController::Base
   def random_user
-    offset = rand(Member.count)
-    rand_member = Member.first(:offset => offset)
+    offset = rand(Member.listeners.count)
+    rand_member = Member.find(10)
+    #rand_member = Member.listeners.first(:offset => offset)
     #render :json => rand_member.jid.to_json()
     return rand_member.jid
   end

@@ -1,0 +1,20 @@
+.title{
+  margin:40px 40px 20px 40px; 
+  font-size:46px;
+}
+
+.subtitle
+{
+  font-size: 30px;
+  margin:0px 0px 10px 80px;
+}
+
+.description
+{
+  font-size: 20px;
+  margin:80px 10px 40px 40px;
+}
+
+.main-image{
+float: right
+}
