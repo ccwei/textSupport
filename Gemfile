@@ -48,3 +48,5 @@ gem 'jquery-rails'
 # To use debugger
 gem 'ruby-debug19', :require => 'ruby-debug'
 gem 'ruby-debug-base19x', '~> 0.11.30.pre4'
+
+gem 'quiet_assets', :group => :development

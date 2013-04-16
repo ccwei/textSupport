@@ -9,6 +9,8 @@ class RegistrationsController < Devise::RegistrationsController
   def create
       params[:member][:email] = params[:member][:email].strip if params[:member] and params[:member][:email]
       build_resource
+      email = params[:member][:email]
+      member = Member.find_by_email(email)
       xmpp_username = params[:member][:email].gsub('@', '_')
       xmpp_password = params[:member][:password]
       logger.info '=================resource==========' + params[:member][:password]

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130408172837) do
+ActiveRecord::Schema.define(:version => 20130416060730) do
 
   create_table "irc_custom", :id => false, :force => true do |t|
     t.text      "jid",        :null => false
@@ -41,6 +41,10 @@ ActiveRecord::Schema.define(:version => 20130408172837) do
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
     t.boolean  "is_listener",            :default => false
+    t.string   "gender"
+    t.string   "occupation"
+    t.string   "description"
+    t.string   "nickname"
   end
 
   add_index "members", ["email"], :name => "index_members_on_email", :unique => true
