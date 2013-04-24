@@ -20,15 +20,33 @@ class RegistrationsController < Devise::RegistrationsController
           set_flash_message :notice, :signed_up if is_navigational_format?
           sign_up(resource_name, resource)
           register_XMPP_user(xmpp_username, xmpp_password)
-          respond_with resource, :location => after_sign_up_path_for(resource)
+          if member.present?
+		logger.info "1============" +  member.is_listener.to_s
+          	render :json => {:isListener => member.is_listener}.to_json()
+          else
+          	render :json => {:isListener => 0}.to_json()	
+	  end
+	  #respond_with resource, :location => after_sign_up_path_for(resource)
         else
           set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
           expire_session_data_after_sign_in!
-          respond_with resource, :location => after_inactive_sign_up_path_for(resource)
+          if member.present?
+		logger.info "2============" + member.is_listener.to_s
+          	render :json => {:isListener => member.is_listener}.to_json()
+          else
+          	render :json => {:isListener => 0}.to_json()	
+	  end
+          #respond_with resource, :location => after_inactive_sign_up_path_for(resource)
         end
       else
         clean_up_passwords resource
-        respond_with resource
+          if member.present?
+		logger.info "3============" +  member.is_listener.to_s
+          	render :json => {:isListener => member.is_listener}.to_json()
+          else
+          	render :json => {:isListener => 0}.to_json()	
+	  end
+        #respond_with resource
       end
   end
 end
