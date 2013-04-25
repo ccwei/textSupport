@@ -10,7 +10,7 @@ class Member < ActiveRecord::Base
   scope :listeners, where(:is_listener => true)
 
   def jid
-    email.gsub('@', '_') 
+    id.to_s
   end
 
 end
