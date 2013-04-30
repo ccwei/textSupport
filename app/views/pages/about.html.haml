@@ -1,0 +1,56 @@
+.welcome-message
+  %h3
+    Meet The TextSupport Team:
+.description-container
+  .teammate.white-well
+    .row
+      .span2
+        .image-container
+          =link_to image_tag("about/justine.jpg", :size => "110x125"), 'http://www.linkedin.com/profile/view?id=175182704', :target => "_blank"
+      .span9
+        .name
+          Justine T. Kao
+
+        .description
+          Justine is a Ph.D. student in Psychology at Stanford specializing in language research. She believes in the power of communication and is passionate about building technology that helps people around the world feel heard and connected.
+  .teammate.white-well
+    .row
+      .span2
+        .image-container
+          =link_to image_tag("about/desmond.jpg", :size => "110x125"), 'http://www.linkedin.com/profile/view?id=231586950', :target => "_blank"
+      .span9
+        .name
+          Desmond Ong
+        .description
+          Desmond is a PhD student in Psychology at Stanford who studies emotions and prosocial behavior. He is fascinated with technology and how technology can be harnessed to help people enjoy better emotional health and be more awesome at life in general.
+
+  .teammate.white-well
+    .row
+      .span2
+        .image-container
+          =link_to image_tag("about/wei.jpg", :size => "110x125"), 'http://www.linkedin.com/profile/view?id=138357170', :target => "_blank"
+      .span9
+        .name
+          Chih-Chiang Wei
+        .description
+          Wei is a master's student in Computer Science Department at Stanford specializing in human-computer interaction (HCI). He believes in using technology to improve people's daily lives.
+  .teammate.white-well
+    .row
+      .span2
+        .image-container
+      .span9
+        .name
+          Yu-Chi Cheng
+        .description
+
+:css
+  .name{
+    font-size:20px;
+    color: #3A7BB5;
+  }
+  .description{
+    margin: 10px 10px 0px 0px;
+  }
+  .image-container{
+    margin-left: 25px;
+  }

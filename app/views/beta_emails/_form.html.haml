@@ -1,0 +1,7 @@
+= form_for BetaEmail.new, :remote => true do |f|
+  .field
+    %h3
+      Sign up for the free mobile app when it's ready.
+    .form-horizontal#email-container
+      = f.text_field :email, :placeholder => "What's your email address?"
+      = f.submit 'Save', :class => "btn btn-primary"

@@ -1,0 +1,19 @@
+%h1 Listing beta_emails
+
+%table
+  %tr
+    %th Email
+    %th
+    %th
+    %th
+
+  - @beta_emails.each do |beta_email|
+    %tr
+      %td= beta_email.email
+      %td= link_to 'Show', beta_email
+      %td= link_to 'Edit', edit_beta_email_path(beta_email)
+      %td= link_to 'Destroy', beta_email, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Beta email', new_beta_email_path

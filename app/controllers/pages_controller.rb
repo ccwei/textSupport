@@ -10,4 +10,21 @@ class PagesController < ActionController::Base
 	    format.json {render :json => "#{@user.id}"}
 	  end
 	end
+
+  def about
+    render 'about', :layout => 'cosmo'
+  end
+
+  def info
+    render 'info', :layout => 'cosmo'
+  end
+
+  def privacy
+    render 'privacy', :layout => 'cosmo'
+  end
+
+  def terms
+    render 'terms', :layout => 'cosmo'
+  end
+
 end

@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Email:
+  = @beta_email.email
+
+= link_to 'Edit', edit_beta_email_path(@beta_email)
+\|
+= link_to 'Back', beta_emails_path

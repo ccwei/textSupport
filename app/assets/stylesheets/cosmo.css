@@ -1,0 +1,15 @@
+/* Cosmo 2.3.1
+ * Bootswatch
+ *= require_self
+ *= require cosmo/loader
+ *= require font-awesome/font-awesome
+*/
+
+.white-well{
+  padding: 20px 0px 20px 0px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin-top: 20px;
+  border: 2px solid #e1e1e1;
+  background-color: white;
+}

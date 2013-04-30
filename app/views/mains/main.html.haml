@@ -1,30 +1,45 @@
-.row
-	.span6
-		.title
-			TextSupport
-
-		.subtitle
-			Random Texts of Kindness
-
-
-		.well.description
-			TextSupport is a mobile app that serves as a platform for giving and receiving social support through text. 
-			Its ultimate goal is to improve people’s moods and sense of connection with others.
-			%br
-			%br
-			%p
-				We are a group of peer counselors and psychology students who are passionate about helping people by providing a listening ear.
-				If you ever want to talk to someone, we provide a free, safe, and anonymous environment for you to share your emotions.
-	.span6
-		.main-image
-			=image_tag("love-heart.jpg")
+=stylesheet_link_tag 'http://vjs.zencdn.net/c/video-js.css'
+=javascript_include_tag 'http://vjs.zencdn.net/c/video.js'
+.row.white-well
+  .span6
+    .large-logo
+      =image_tag("logo.png")
+    .well.description.margin-top-30
+      %b TextSupport 
+      is a mobile app and web chat service that provides a platform for giving and receiving social support. Our ultimate goal is to improve people’s wellbeing and sense of connection with others.
+      %br
+      %br
+      %p
+      If you have ever felt the desire to share your feelings -- whether it is heartbreak, joy, stress, grief, or loneliness -- we provide a 
+      %b free, 
+      %b safe, 
+      and 
+      %b anonymous 
+      environment for you to connect with a friendly listener.
+  .offset1.span4
+    .main-video
+      =video_tag "/assets/video.mp4", :size => "320x240", :controls => true
+    .email-box
+      =render :template => 'beta_emails/new'
 
 <!--Start of Zopim Live Chat Script-->
 :javascript
-	window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
-	d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
-	_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
-	$.src='//cdn.zopim.com/?1B0IZdWWMpiII8zjMv4oI19rtI6caSB6';z.t=+new Date;$.
-	type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
-	$zopim.livechat.window.show();
+  window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+  d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+  _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+  $.src='//cdn.zopim.com/?1B0IZdWWMpiII8zjMv4oI19rtI6caSB6';z.t=+new Date;$.
+  type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+  $zopim.livechat.window.show();
 <!--End of Zopim Live Chat Script-->
+:css
+  .main-video{
+    margin-top: 20px;
+  }
+  .margin-top-30
+  {
+      margin-top: 30px;
+  }
+  .description
+  {
+     font-size: 18px;
+  }

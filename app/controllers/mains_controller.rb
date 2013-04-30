@@ -1,5 +1,5 @@
 class MainsController < ActionController::Base
 	def main
-		render 'main', :layout => 'application'
+		render 'main', :layout => 'cosmo'
 	end
 end

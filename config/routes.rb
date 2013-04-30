@@ -1,10 +1,17 @@
 TextSupport::Application.routes.draw do
 
+  resources :beta_emails
+
   #devise_for :users
   devise_for :members, :controllers => {:sessions => "sessions", :registrations => "registrations"}
   match '/login', :to => 'pages#login'
   get '/chatusers/chat_random_user' => "chatusers#chat_random_user", :as => "chat_random_user"
   get '/mains/main' => "mains#main", :as => "mains_main"
+
+  match '/about' => 'pages#about', :as => "about"
+  match '/info' => 'pages#info', :as => "info"
+  match '/privacy' => 'pages#privacy', :as => "privacy"
+  match '/terms' => 'pages#terms', :as => "terms"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
