@@ -34,7 +34,7 @@ group :assets do
   # gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'twitter-bootswatch-rails', '~> 2.3.1'
+  gem 'twitter-bootswatch-rails', '~> 2.3.1.2'
 end
 
 gem 'thin'
