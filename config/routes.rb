@@ -13,6 +13,7 @@ TextSupport::Application.routes.draw do
   match '/info' => 'pages#info', :as => "info"
   match '/privacy' => 'pages#privacy', :as => "privacy"
   match '/terms' => 'pages#terms', :as => "terms"
+  match '/contacts' => 'pages#contacts', :as => "contacts"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -12,19 +12,22 @@ class PagesController < ActionController::Base
 	end
 
   def about
-    render 'about', :layout => 'cosmo'
+    render 'about', :layout => 'application'
   end
 
   def info
-    render 'info', :layout => 'cosmo'
+    render 'info', :layout => 'application'
   end
 
   def privacy
-    render 'privacy', :layout => 'cosmo'
+    render 'privacy', :layout => 'application'
   end
 
   def terms
-    render 'terms', :layout => 'cosmo'
+    render 'terms', :layout => 'application'
   end
 
+  def contacts
+    render 'contacts', :layout => 'application'
+  end
 end

@@ -7,6 +7,15 @@ class RegistrationsController < Devise::RegistrationsController
     response = send_ctl_command(register_str)
   end
 
+  #GET /resource/edit
+  def edit
+    render :template => 'members/registrations/edit'
+  end
+
+  def update
+    super
+  end
+
   def create
     logger.info '=================create==============='
     params[:member][:email] = params[:member][:email].strip if params[:member] and params[:member][:email]
