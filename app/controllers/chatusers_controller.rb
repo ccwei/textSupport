@@ -3,7 +3,7 @@ require './ModRest.rb'
 class ChatusersController < ActionController::Base
   def random_user
     offset = rand(Member.listeners.count)
-    #rand_member = Member.find(10)
+    #rand_member = Member.find(43)
     rand_member = Member.listeners.first(:offset => offset)
     #render :json => rand_member.jid.to_json()
     return rand_member
@@ -21,8 +21,20 @@ class ChatusersController < ActionController::Base
     add_rosteritem user1, user2
     listenerJID = user2.jid + '@' + DOMAINNAME
     user1JID = user1 + '@' + DOMAINNAME
-    send_default_msg listenerJID, user1JID
+    #send_default_msg listenerJID, user1JID
     render :json => {:listenerJid => listenerJID, :nickname => user2.nickname, :desc => user2.description, :gender => user2.gender}.to_json()
+  end
+
+  def get_nick_name
+    jid = params[:jid]
+    id = jid[0...jid.index('@')].to_i
+    logger.info id.to_s
+    member = Member.find_by_id(id)
+    if member.is_listener
+      render :json => {:nickname => member.nickname}.to_json()
+    else
+      render :json => {:nickname => 'User #' + id.to_s}.to_json()
+    end
   end
 
   def send_default_msg from, to

@@ -8,35 +8,41 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-      logger.info '=================create==============='
-      params[:member][:email] = params[:member][:email].strip if params[:member] and params[:member][:email]
-      build_resource
-      email = params[:member][:email]
-      member = Member.find_by_email(email)
-      if member.present?
-        xmpp_username = member.id.to_s
-        xmpp_password = params[:member][:password]
-      end
-      if resource.save
+    logger.info '=================create==============='
+    params[:member][:email] = params[:member][:email].strip if params[:member] and params[:member][:email]
+    build_resource
+    email = params[:member][:email]
+    if resource.save
+      if resource.active_for_authentication?
+        set_flash_message :notice, :signed_up if is_navigational_format?
+        sign_up(resource_name, resource)
+
         member = Member.find_by_email(email)
-        xmpp_username = member.id.to_s
-        xmpp_password = params[:member][:password]
-        if resource.active_for_authentication?
-          set_flash_message :notice, :signed_up if is_navigational_format?
-          sign_up(resource_name, resource)
-          register_XMPP_user(xmpp_username, xmpp_password)
-        else
-          set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
-          expire_session_data_after_sign_in!
+        if member.present?
+          xmpp_username = member.id.to_s
+          xmpp_password = params[:member][:password]
+        end
+        register_XMPP_user(xmpp_username, xmpp_password)
+        respond_with resource do |format|
+          format.json {render :json => resource}
+          format.html {redirect_to after_sign_up_path_for(resource)}
         end
       else
-        clean_up_passwords resource
+        set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
+        expire_session_data_after_sign_in!
+        respond_with resource do |format|
+          format.json {render :json => resource}
+          format.html {redirect_to after_inactive_sign_up_path_for(resource)}
+        end
       end
-      if member.present?
-        render :json => {:isListener => member.is_listener, :uid => member.id}.to_json()
-      else
-        render :json => {:isListener => 0}.to_json()
+    else
+      clean_up_passwords resource
+      respond_with resource do |format|
+        format.json {render :json => resource}
+        format.html {redirect_to root_url}
       end
+    end
   end
+
 
 end

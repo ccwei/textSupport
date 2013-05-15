@@ -1,27 +1,28 @@
-=stylesheet_link_tag 'http://vjs.zencdn.net/c/video-js.css'
-=javascript_include_tag 'http://vjs.zencdn.net/c/video.js'
-.row.white-well
-  .span6
-    .large-logo
-      =image_tag("logo.png")
-    .well.description.margin-top-30
-      %b TextSupport 
-      is a mobile app and web chat service that provides a platform for giving and receiving social support. Our ultimate goal is to improve people’s wellbeing and sense of connection with others.
-      %br
-      %br
-      %p
-      If you have ever felt the desire to share your feelings -- whether it is heartbreak, joy, stress, grief, or loneliness -- we provide a 
-      %b free, 
-      %b safe, 
-      and 
-      %b anonymous 
-      environment for you to connect with a friendly listener.
-  .offset1.span4
-    .main-video
-      =video_tag "/assets/video.mp4", :size => "320x240", :controls => true
-    .email-box
-      =render :template => 'beta_emails/new'
-
+.white-well
+  .row
+    .span6
+      .large-logo
+        =image_tag("logo.png")
+      .subtitle
+        Share your feelings with someone who cares.
+      .well.description.margin-top-30
+        %b TextSupport
+        is a mobile app and web chat service that provides a platform for giving and receiving social support. Our ultimate goal is to improve people’s wellbeing and sense of connection with others.
+        %br
+        %br
+        %p
+      .try-now.center
+    .offset1.span4
+      .main-video
+        =video_tag "/assets/video.mp4", :size => "320x240", :controls => true
+      .email-box
+        %form{:action => "https://www.paypal.com/cgi-bin/webscr", :method => "post", :target =>"_blank"}
+          %input{:type => "hidden", :name => "cmd", :value => "_s-xclick"}
+          %input{:type => "hidden", :name => "encrypted", :value => "-----BEGIN PKCS7-----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-----END PKCS7-----"}
+          %input{:type =>"image", :src => "https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif", :border=>"0", :name=>"submit", :alt=>"PayPal - The safer, easier way to pay online!"}
+          %img{:alt=>"", :border=>"0", :src=>"https://www.paypalobjects.com/en_US/i/scr/pixel.gif", :width=>"1", :height=>"1"}
+  .row
+    =render :template => 'beta_emails/new'
 <!--Start of Zopim Live Chat Script-->
 :javascript
   window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
@@ -29,7 +30,27 @@
   _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
   $.src='//cdn.zopim.com/?1B0IZdWWMpiII8zjMv4oI19rtI6caSB6';z.t=+new Date;$.
   type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
-  $zopim.livechat.window.show();
+
+  $(document).ready(function(){
+    //rotatePics(1);
+  });
+
+  /*
+  function rotatePics(currentPhoto) {
+    var numberOfPhotos = $('#photos img').length;
+    currentPhoto = currentPhoto % numberOfPhotos;
+    $('#photos img').eq(currentPhoto).fadeOut(function() {
+      // re-order the z-index
+      $('#photos img').each(function(i) {
+        console.log(((numberOfPhotos - i) + currentPhoto) % numberOfPhotos);
+        $(this).css(
+          'zIndex', ((numberOfPhotos - i) + currentPhoto) % numberOfPhotos
+        );
+      });
+      $(this).show();
+      setTimeout(function() {rotatePics(++currentPhoto);}, 4000);
+    });
+  }*/
 <!--End of Zopim Live Chat Script-->
 :css
   .main-video{
@@ -42,4 +63,28 @@
   .description
   {
      font-size: 18px;
+  }
+  .subtitle
+  {
+    margin: 20px 20px 20px 20px;
+    font-size: 24px;
+    color: #1AC4B3;
+  }
+  .center
+  {
+    margin-left:auto;
+    margin-right:auto;
+    width:70%;
+    background-color:#b0e0e6;
+  }
+  .try-now{
+    
+  }
+  #photos img {
+    position: absolute;
+  }
+  #photos {
+    width: 180px;
+    height: 200px;
+    overflow: hidden;
   }

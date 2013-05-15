@@ -6,6 +6,7 @@ TextSupport::Application.routes.draw do
   devise_for :members, :controllers => {:sessions => "sessions", :registrations => "registrations"}
   match '/login', :to => 'pages#login'
   get '/chatusers/chat_random_user' => "chatusers#chat_random_user", :as => "chat_random_user"
+  get '/chatusers/get_nick_name' => 'chatusers#get_nick_name'
   get '/mains/main' => "mains#main", :as => "mains_main"
 
   match '/about' => 'pages#about', :as => "about"
