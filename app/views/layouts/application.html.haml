@@ -32,6 +32,11 @@
                 =link_to 'Terms', terms_url
               %li
                 =link_to 'Contacts', contacts_url
+              -if current_member
+                %li
+                  =link_to 'Edit Profile', edit_member_registration_path
+                %li
+                  =link_to "Sign out", destroy_member_session_path, :method => :delete
     .container
       = yield
 
