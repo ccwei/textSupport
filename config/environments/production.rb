@@ -66,4 +66,5 @@ TextSupport::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   config.action_mailer.default_url_options = { :host => 'ec2-54-245-147-206.us-west-2.compute.amazonaws.com:3000' }
+  GA.tracker = "UA-41007981-1"
 end
