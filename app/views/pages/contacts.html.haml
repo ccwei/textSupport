@@ -1,2 +1,16 @@
 .white-well
-  If you have any questions, please contact us at listeners.for.you@gmail.com
+  %p.margin-10
+    If you have any questions, please contact us at
+    =mail_to 'listeners.for.you@gmail.com'
+    </br>
+    Facebook: 
+    =link_to 'https://www.facebook.com/textsupport', 'https://www.facebook.com/textsupport', :target => "_blank"
+    </br>
+    Twitter: 
+    =link_to '@TextSupportOrg', 'https://twitter.com/intent/user?screen_name=textsupportorg', :target => "_blank"
+    </br>
+
+:css
+  .margin-10{
+    margin: 10px 10px 10px 10px;
+  }
