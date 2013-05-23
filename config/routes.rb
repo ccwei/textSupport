@@ -4,6 +4,9 @@ TextSupport::Application.routes.draw do
 
   #devise_for :users
   devise_for :members, :controllers => {:sessions => "sessions", :registrations => "registrations"}
+  devise_scope :member do
+    get "update_device_token", :to => "registrations#update_device_token"
+  end
   match '/login', :to => 'pages#login'
   get '/chatusers/chat_random_user' => "chatusers#chat_random_user", :as => "chat_random_user"
   get '/chatusers/get_nick_name' => 'chatusers#get_nick_name'
@@ -14,6 +17,8 @@ TextSupport::Application.routes.draw do
   match '/privacy' => 'pages#privacy', :as => "privacy"
   match '/terms' => 'pages#terms', :as => "terms"
   match '/contacts' => 'pages#contacts', :as => "contacts"
+#  match '/user_list' => 'pages#user_list', :as => "user_list"
+  match '/one_minute' => 'pages#one_minute', :as => "one_minute"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -18,11 +18,12 @@ gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) support
 gem "twitter-bootstrap-rails"
 
 gem 'xmpp4r'
-
+gem 'apns'
 gem 'devise'
 
 gem 'quiet_assets', :group => :development
 gem 'therubyracer'
+gem 'whenever', :require => false
 
 group :development do
   gem 'linecache19', :git => 'git://github.com/mark-moseley/linecache'

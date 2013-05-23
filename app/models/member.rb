@@ -6,7 +6,7 @@ class Member < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :nickname, :gender, :occupation, :description
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :nickname, :gender, :occupation, :description, :device_token
   scope :listeners, where(:is_listener => true)
 
   def jid

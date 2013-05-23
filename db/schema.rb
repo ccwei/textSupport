@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130428045855) do
+ActiveRecord::Schema.define(:version => 20130522061920) do
 
   create_table "beta_emails", :force => true do |t|
     t.string   "email"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20130428045855) do
     t.string   "occupation"
     t.string   "description"
     t.string   "nickname"
+    t.string   "device_token"
   end
 
   add_index "members", ["email"], :name => "index_members_on_email", :unique => true

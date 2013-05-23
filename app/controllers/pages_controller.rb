@@ -30,4 +30,15 @@ class PagesController < ActionController::Base
   def contacts
     render 'contacts', :layout => 'application'
   end
+
+  def user_list
+    @member = Member.where("created_at > :date", date: "2013-05-18 00:00:00")
+    @users = BetaEmail.where("created_at > :date", date: "2013-05-18 00:00:00")
+    render 'user_list', :layout => 'application'
+  end
+
+  def one_minute
+    render 'one_minute', :layout => 'application'
+  end
+
 end

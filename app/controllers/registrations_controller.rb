@@ -16,6 +16,14 @@ class RegistrationsController < Devise::RegistrationsController
     super
   end
 
+  def update_device_token
+    if params[:email].present? and params[:device_token].present?
+      member = Member.find_by_email(params[:email])
+      member.device_token = params[:device_token]
+      member.save
+    end
+  end
+
   def create
     logger.info '=================create==============='
     params[:member][:email] = params[:member][:email].strip if params[:member] and params[:member][:email]
