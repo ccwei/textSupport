@@ -6,6 +6,8 @@ ADMIN_PASSWORD = '123456'
 
 def send_ctl_command(command)
   server_str = 'http://' + DOMAINNAME + ':5285/rest/'
-  auth_str = '--auth ' + ADMIN_ACCOUNT + ' ' + DOMAINNAME + ' ' + ADMIN_PASSWORD + ' ' 
+  auth_str = '--auth ' + ADMIN_ACCOUNT + ' ' + DOMAINNAME + ' ' + ADMIN_PASSWORD + ' '
+  print server_str + '\n'
+  print auth_str + '\n'
   response = RestClient.post(server_str, auth_str + command)
-end 
+end

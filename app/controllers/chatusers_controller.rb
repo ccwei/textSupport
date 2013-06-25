@@ -17,7 +17,11 @@ class ChatusersController < ActionController::Base
 
   def chat_random_user
     user1 = params[:user]
-    user2 = random_user
+    if user1 == "42"
+      user2 = Member.find(300)
+    else
+      user2 = random_user
+    end
     add_rosteritem user1, user2
     listenerJID = user2.jid + '@' + DOMAINNAME
     user1JID = user1 + '@' + DOMAINNAME

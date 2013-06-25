@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130522061920) do
+ActiveRecord::Schema.define(:version => 20130624215434) do
 
   create_table "beta_emails", :force => true do |t|
     t.string   "email"
@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(:version => 20130522061920) do
     t.string   "description"
     t.string   "nickname"
     t.string   "device_token"
+    t.string   "notdisturb"
+    t.string   "enable_notdisturb"
   end
 
   add_index "members", ["email"], :name => "index_members_on_email", :unique => true
@@ -204,10 +206,11 @@ ActiveRecord::Schema.define(:version => 20130522061920) do
   add_index "rosterusers", ["username"], :name => "i_rosteru_username"
 
   create_table "spool", :id => false, :force => true do |t|
-    t.string    "username",   :limit => 250, :null => false
-    t.text      "xml",                       :null => false
-    t.integer   "seq",        :limit => 8,   :null => false
-    t.timestamp "created_at",                :null => false
+    t.string    "username",   :limit => 250,                    :null => false
+    t.text      "xml",                                          :null => false
+    t.integer   "seq",        :limit => 8,                      :null => false
+    t.timestamp "created_at",                                   :null => false
+    t.boolean   "notified",                  :default => false
   end
 
   add_index "spool", ["seq"], :name => "seq", :unique => true
